@@ -1,0 +1,1 @@
+alert('Bonjour je suis le fihier javascript');

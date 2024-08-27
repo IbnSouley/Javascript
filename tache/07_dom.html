@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .citation{
+            font-style: italic;
+            color: rgb(160, 71, 71);
+        }
+        .fondvert{
+            background-color: rgb(50, 139, 95);
+        }
+    </style>
+</head>
+<body>
+   <h1 id="title">DOM <strong>HTML</strong></h1>
+   
+   <p>
+    Chapitre 1 : Lorem ipsum dolor sit amet <strong>Text en Gras</strong> consectetur adipisicing elit. <br> <span class="citation">
+        citation 1 : Repellendus reprehenderit velit ipsa a officia aliquid, temporibus vitae eaque hic dicta.</span> Consectetur id blanditiis accusantium expedita nisi ipsam ut eius quo!
+   </p>
+
+   <p>
+    Chapitre 2 : Lorem ipsum dolor sit amet <strong>Text en Gras</strong> consectetur adipisicing elit. <br> <span class="citation">
+        citation 2 : Repellendus reprehenderit velit ipsa a officia aliquid, temporibus vitae eaque hic dicta.</span> Consectetur id blanditiis accusantium expedita nisi ipsam ut eius quo!
+   </p>
+
+   <ul>
+    <li>Fraises</li>
+    <li>Pommes</li>
+    <li>Poires</li>
+    <li>Bananes</li>
+    <li>Kiwis</li>
+    <li>Raisin</li>
+   </ul>
+
+   <a href="https://www.google.fr">Cliquez ici</a>
+
+   <!-- JAVASCRIPT -->
+   <script>
+    console.log("Largeur de l'ecran : " + window.innerWidth + 'px');
+    console.log('Chemin du fichier : ' + document.documentURI);
+    //Selectionner par son ID
+    // console.log(document.getElementById('title'));
+    let title = document.getElementById('title');
+
+    //Recuperer uniquement le text
+    console.log(title.innerText);
+    //Recuperer uniquement le HTML
+    console.log(title.innerHTML);
+
+    //Modifier le contenu text
+    title.innerText = '<em>Nouveau</em> titre';
+     //Modifier le contenu HTML
+     title.innerText = '<em>Nouveau</em> titre';
+
+     //Selectionner par leurs class
+     let citation = document.getElementsByClassName('citation');
+     console.log(citation);// Tableau en resultat
+     console.log(citation[1]); // Tableau à l'index 1
+
+     //Selectionner par leurs balises
+     let paragraphe = document.getElementsByTagName('p');
+     console.log(paragraphe[0].innerText); //Contenu text du 1er paragraphe
+
+     //Selectionner avec les selecteurs css
+     console.log(document.querySelector('#title'));
+     console.log(document.querySelectorAll('.citation'));
+
+      //Recuperer Attribut HTML
+      let a = document.querySelector('a');
+     console.log(a.getAttribute('href'));
+     a.setAttribute('href', 'http://www.weformyou.fr');
+
+     //Modifier le style css
+    //  console.log(document.querySelector('p').style.backgroundColor = '#aaa');
+
+     //Recuperer la liste des classes css d'un element HTML
+     console.log(document.querySelector('p').classList);
+
+     //Ajouter une class css à un element HTML
+    document.querySelector('p').classList.add('fondvert');
+
+    //Supprimer une class css a un element HTML
+    let tabLi = document.querySelectorAll('ul li:nth-child(even)');
+    console.log(tabLi);
+    for(let li of tabLi){
+        li.classList.add('fondvert');
+    }
+
+    //Tester la presence d'une class css sur un element HTML
+    if(document.querySelector('li:nth-child(2)').classList.contains('fondvert'))
+    {
+        console.log('la classe verte est affectée');
+    }
+
+    //Echanger la presence d'une class css à un element HTML
+    document.querySelector('p').classList.toggle('fondvert');
+
+    //Deplacer des elements HTML
+    document.querySelector('p').appendChild(document.querySelector('h1'));
+
+   </script>
+</body>
+</html>
